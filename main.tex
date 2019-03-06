@@ -1,0 +1,85 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+
+\title{Public-private wage gap in Brazil: a counterfactual analysis of longitudinal data}
+\author{Vítor Costa}
+\date{October 2018}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction and motivation}
+Anecdotal evidence in Brazil suggests public sector workers are overcompensated compared to their private sector counterparts. In fact, (brief list of references for the Brazilian economy and their estimates). (Highlight the discrepancy of these estimates). (highlight their lack of treatment for endogenous selection).
+
+Add
+\begin{enumerate}
+    \item Segmentation (the two different legal frameworks, CLT vs Statutory)
+    \item Endogenous selection (selection via highly competitive civil exams)
+    \item Increasing share of personnel expense in the national budget 
+    \item Results for other countries
+\end{enumerate}
+
+
+This paper's contribution to this literature is twofold: I apply a quantile Oaxaca-Blinder decomposition method and use the panel structure of the data to estimate worker fixed effects. The method allows me to estimate composition and structural effects of the private-public gap along the distribution of wages. Endogeneity procedure relies on Canay (2011).  
+
+Add 
+\begin{enumerate}
+    \item conclusions
+    \item sections layout 
+\end{enumerate}
+
+\section{Steps with dataset}
+Describe RAIS. 
+
+\begin{enumerate}
+    \item Filter RAIS for: prime age workers (25-54), keep only CNPJs - drop CEIs, drop blank PIS, select only federal administration employees, keep only clt and statutory.
+    \item sample using 1\% or 10\% of whole data set.  
+    \item validate CNPJ and PIS
+    \item compute log hourly wages (hired wages over hired hours)
+    \item select contract types (permanent vs temporary)
+    \item create variable for low, medium and high skills
+    \item create different subsets from sample, skills $\times$ sex $\times$ race.
+    \item show descriptive statistics.
+\end{enumerate}
+
+\section{Results without FE}
+\subsection{Oaxaca-Blinder (OB)}
+\begin{enumerate}
+    \item Compute average wage gaps by year and plot
+    \item Briefly describe the OB decomposition method
+    \item Compute OB by year and plot
+\end{enumerate}
+
+\subsection{Quantile OB (QOB)}
+\begin{enumerate}
+    \item Describe the methodology in Chernozhukov 
+    \item Use \texttt{Counterfactual} - \cite{Chen2017} -  for whole sample and year-by-year and plot
+    \item Repeat for all the other six data segments and plot
+    \item Describe results. Is there a premium along the whole wage distribution? Does the premium phase out more quickly for more skilled workers? Does the premium ever phase out for females? What is predominant for explaining the premium, workers characteristics or market segmentation?
+\end{enumerate}
+
+\section{Accounting for endogenous selection}
+\begin{enumerate}
+    \item Briefly describe \cite{Canay2011} \cite{}
+    \item Highlight the advantages of the somewhat lengthy panel we have (the higher T the better)
+    \item Estimate workers FE
+    \item Re-estimate QOB for net-of-fe wages and plot
+    \item Describe and compare: Is the premium more or less persistent in this case? Any particular segment changes the most, e.g. high skilled men? Positive selection in which part of the distribution? Negative selection in any segment? 
+    \item Can we see wage compression in the public sector as in Hospido and other European countries?
+\end{enumerate}
+
+\section{Conclusion}
+ \begin{enumerate}
+     \item what do we learn from the quantile decomposition? where does the premium phase out?
+     \item is self-selection important? by how much?
+     \item what is the size of premium once we account for selection?
+     \item show expenses with inactive civil employees and its evolution in time.
+     \item state the discrepancy of retirement entitlements for both types of workers and problems for future research. 
+\end{enumerate}  
+
+\bibliographystyle{chicago}
+\bibliography{library.bib}
+
+\end{document}

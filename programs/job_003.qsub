@@ -1,0 +1,19 @@
+#!/bin/bash -l
+
+#PBS -l ncpus=4
+
+
+umask 007
+source /etc/profile.d/modules.sh
+
+module load R
+
+
+cd $PBS_O_WORKDIR
+
+for prog in $(ls 003_genvar.R)
+do
+  echo "$(date +%F-%H:%M) == Starting to process $prog"
+R --vanilla < ${prog} > ${prog}out
+  echo "$(date +%F-%H:%M) == Finished process $prog"
+done

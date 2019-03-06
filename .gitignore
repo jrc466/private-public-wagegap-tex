@@ -1,0 +1,7 @@
+*.Rout
+*~
+*.Rhistory
+*.qsub.e*
+*.qsub.o*
+/sample
+/analysis_output
