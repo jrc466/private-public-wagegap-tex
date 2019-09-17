@@ -1,0 +1,129 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+
+
+
+\begin{longtable}[c]{@{}lccc@{}}
+\toprule
+& Non-shifter (N=3207959) & Shifter (N=57139) & Total
+(N=3265098)\tabularnewline
+\midrule
+\endhead
+Age & & &\tabularnewline
+- Mean (SD) & 37.522 (7.945) & 36.845 (7.671) & 37.510
+(7.940)\tabularnewline
+- Median (Q1, Q3) & 36.000 (31.000, 44.000) & 35.000 (30.000, 42.000) &
+36.000 (31.000, 44.000)\tabularnewline
+- Range & 25.000 - 54.000 & 25.000 - 54.000 & 25.000 -
+54.000\tabularnewline
+Tenure & & &\tabularnewline
+- Mean (SD) & 64.000 (78.452) & 33.519 (61.459) & 63.467
+(78.289)\tabularnewline
+- Median (Q1, Q3) & 31.900 (11.900, 82.600) & 10.000 (5.200, 22.800) &
+31.100 (11.800, 81.900)\tabularnewline
+- Range & 0.000 - 487.000 & 0.000 - 440.700 & 0.000 -
+487.000\tabularnewline
+Gender & & &\tabularnewline
+- Male & 1884225 (58.7\%) & 26741 (46.8\%) & 1910966
+(58.5\%)\tabularnewline
+- Female & 1323734 (41.3\%) & 30398 (53.2\%) & 1354132
+(41.5\%)\tabularnewline
+Race & & &\tabularnewline
+- N-Miss & 177046 & 1354 & 178400\tabularnewline
+- White & 1932713 (63.8\%) & 35394 (63.4\%) & 1968107
+(63.8\%)\tabularnewline
+- Nonwhite & 1098200 (36.2\%) & 20391 (36.6\%) & 1118591
+(36.2\%)\tabularnewline
+Education & & &\tabularnewline
+- Low & 1253026 (39.1\%) & 10948 (19.2\%) & 1263974
+(38.7\%)\tabularnewline
+- Medium & 1414390 (44.1\%) & 24143 (42.3\%) & 1438533
+(44.1\%)\tabularnewline
+- High & 540543 (16.9\%) & 22048 (38.6\%) & 562591
+(17.2\%)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{document}

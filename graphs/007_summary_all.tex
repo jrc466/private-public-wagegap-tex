@@ -1,0 +1,136 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+            pdftitle={},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\setcounter{secnumdepth}{0}
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+
+
+
+\begin{longtable}[c]{@{}lccc@{}}
+\toprule
+& Public (N=797128) & Private (N=3151791) & Total
+(N=3948919)\tabularnewline
+\midrule
+\endhead
+Hourly wage (2011 US\$) & & &\tabularnewline
+- Mean (SD) & 41.314 (56.723) & 23.292 (56.803) & 26.930
+(57.245)\tabularnewline
+- Median (Q1, Q3) & 24.400 (12.444, 47.831) & 12.764 (9.224, 21.542) &
+13.809 (9.548, 26.196)\tabularnewline
+- Range & 1.141 - 4758.900 & 1.076 - 21991.700 & 1.076 -
+21991.700\tabularnewline
+Age & & &\tabularnewline
+- Mean (SD) & 40.072 (8.129) & 35.858 (7.991) & 36.708
+(8.196)\tabularnewline
+- Median (Q1, Q3) & 40.000 (33.000, 47.000) & 34.000 (29.000, 42.000) &
+36.000 (30.000, 43.000)\tabularnewline
+- Range & 25.000 - 54.000 & 25.000 - 54.000 & 25.000 -
+54.000\tabularnewline
+Tenure & & &\tabularnewline
+- Mean (SD) & 123.947 (102.908) & 41.529 (55.963) & 58.166
+(75.708)\tabularnewline
+- Median (Q1, Q3) & 95.300 (32.900, 200.900) & 20.900 (7.800, 50.900) &
+26.800 (9.500, 72.900)\tabularnewline
+- Range & 0.000 - 487.000 & 0.000 - 486.900 & 0.000 -
+487.000\tabularnewline
+Gender & & &\tabularnewline
+- Male & 321731 (40.4\%) & 1973298 (62.6\%) & 2295029
+(58.1\%)\tabularnewline
+- Female & 475397 (59.6\%) & 1178493 (37.4\%) & 1653890
+(41.9\%)\tabularnewline
+Race & & &\tabularnewline
+- N-Miss & 207504 & 16583 & 224087\tabularnewline
+- White & 375817 (63.7\%) & 1981624 (63.2\%) & 2357441
+(63.3\%)\tabularnewline
+- Nonwhite & 213807 (36.3\%) & 1153584 (36.8\%) & 1367391
+(36.7\%)\tabularnewline
+Education & & &\tabularnewline
+- Low & 194169 (24.4\%) & 1386563 (44.0\%) & 1580732
+(40.0\%)\tabularnewline
+- Medium & 315961 (39.6\%) & 1410160 (44.7\%) & 1726121
+(43.7\%)\tabularnewline
+- High & 286998 (36.0\%) & 355068 (11.3\%) & 642066
+(16.3\%)\tabularnewline
+\bottomrule
+\end{longtable}
+
+\end{document}
