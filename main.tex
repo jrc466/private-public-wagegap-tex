@@ -1,6 +1,10 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[]{endfloat}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pdflscape, graphicx, booktabs, dcolumn, listings, amsmath,bbm,courier,pgffor,fixltx2e, natbib,enumerate,amssymb,amsfonts,color,hyperref,array,calc,multirow,tikz,amsthm,anyfontsize,bbm}
 
 \title{Public-private wage gap in Brazil: a counterfactual analysis using longitudinal data}
 \author{Vítor Costa}
@@ -56,6 +60,27 @@ Add
 
 \section{Equations for estimations}
 \subsection{Naïve equations}
+Throughout this paper I will refer to the model and estimation of the premium in the absence of any endogenous selection treatment as naïve. If we ignore the possibility of sorting into the public sector of individuals with higher unobserved ability, we could consistently estimate the public-private premium by means of an Oaxaca-Blinder decomposition[\cite{oaxaca_male-female_1973},\cite{blinder_wage_1973}]. \\
+
+\noindent
+Let's denote by $y^{1}_{it}$ the observed wage for individual $i$ in year $t$ in the public sector. If n year $t$, individual $i$ works at the private sector, I denote his wage by $y^{0}_{it}$. Conditional on a set $X_{it}$ of observed individual characteristics, the expected wage in each sector is given by  
+
+\begin{align}
+    y_{it}^{1} = X_{it}^{1}\beta^{1}+u_{it}\\
+    y_{it}^{0} = X_{it}^{0}\beta^{0}+u_{it} \label{wage-priv}
+\end{align}
+which, after taking the averages over individuals, can be rewritten as
+\begin{align}
+    \bar{y}_{t}^{1} - \bar{y}_{t}^{0} &= \bar{X}_{t}^{1}\beta^{1} -\bar{X}_{t}^{0}\beta^{0} \\
+    &= \underbrace{\left(\bar{X}_{t}^{1}-\bar{X}_{t}^{0}\right)\beta^{0}}_{Characteristics} +\underbrace{\bar{X}_{t}^{1}\left(\beta^{1}-\beta^{0}\right)}_{Structural} \label{ob-str}
+\end{align}      
+
+\noindent
+The left hand side of equation (\ref{ob-str}) is the observed mean wage difference between public and private sector workers. The right hand side breaks this difference into two terms that I will refer to \emph{characteristics} and \emph{structural} effects. The characteristics estimates the size of the observed mean wage difference due to differences in observed attributes of workers in both groups, holding fixed the coefficients in the wage equation for group $0$. A higher characteristics effect is obtained when, holding fixed the parameters of equation (\ref{wage-priv}), workers in the public sector have higher (lower) mean observed attributes with positive (negative) coefficients in equation (\ref{wage-priv}). \\
+
+\noindent
+This is indeed the case when we observe the values of exploratory statistics from the sample. From table \ref{}, we can see that workers in the public sector have higher education attainment, higher tenure in the current job, are slightly older and are more likely to be white.   
+
 \begin{enumerate}
     \item Describe the Oaxaca-Blinder decomposition and outline the equation
     \item Describe the Quantile OB, methodology \cite{chernozhukov_inference_2013} 
@@ -67,11 +92,29 @@ Add
 \end{enumerate}
 
 \section{Estimation Results}
+\subsection{Worker Effects}
+The estimated distribution of worker effects is depicted in Figure \ref{fig:we}. The set of possible values for \textcolor{red}{$\alpha_i$ in equation XX is similar across both sectors}. It is not actually the range of individual effects that changes between the two sectors but the probability density of these effects. One can find public and private workers with practically any value for unobserved coefficients in that range, but it is notorious how the density of above average values is higher among public sector workers.\\
+
+\begin{figure}[h!]\label{fig:we}
+  \caption{Worker Effects by Sector}
+  \includegraphics[scale=0.7]{graphs/001_fe_sector_onepc.pdf}
+\end{figure}
 \subsection{Oaxaca-Blinder (OB)}
 \begin{enumerate}
     \item Report overall OB 
     \item Plot yearly OB in both cases
 \end{enumerate}
+The observed wage gap on the whole sample is of x\%, of which y\% is due to workers observed attributes differentials and the remainder z\% stems from differences in coefficients. From Figure \ref{fig:yearly}, the Oaxaca-Blinder decomposition shows that for the first four years in the sample the coefficients effect was negative for public employees, meaning that holding fixed their observed characteristics, their wages would be higher, on average, in the private sector. \\
+
+\noindent
+However, once we take the endogenous selection into the equation, not only does the overall premium get compressed but...
+
+
+\begin{figure}[h!]
+    \includegraphics[scale=0.65]{graphs/002_yearly_ob_onepc.pdf}
+    \caption{Oaxaca-Blinder Decomposition by Year}
+    \label{fig:yearly}
+\end{figure}
 \subsection{Distribution of the Premium}
 \begin{enumerate}
     \item Plot overall distribution in two cases
