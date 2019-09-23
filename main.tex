@@ -6,7 +6,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{longtable,pdflscape, graphicx, booktabs, dcolumn, listings, amsmath,bbm,courier,pgffor,fixltx2e, natbib,enumerate,amssymb,amsfonts,color,hyperref,array,calc,multirow,tikz,amsthm,anyfontsize,bbm}
 \DeclareDelayedFloatFlavour*{longtable}{table}
-\title{Public-private wage gap in Brazil: a counterfactual analysis using longitudinal data}
+\title{Public-private wage gap in Brazil: a counterfactual quantile analysis using longitudinal data}
 \author{Vítor Costa}
 \date
 
@@ -52,37 +52,28 @@ The variables available from RAIS are varied. Each worker and establishment have
 \noindent
 The years in the data go from 2003 up to 2014, amounting to approximately 781 million observations. Due to the computational impossibility of estimating the model in the whole data, I select a 1\% sample based on the worker unique identifier. Following the standard practice in the literature, I filter the sample for prime age workers only, i.e. age between 25 and 54. For workers with more than one job, I keep only the record of the highest paying appointment. I also drop rural workers and employees under temporary contracts. The final sample has approximately 3.95 million job-year observations and 683,821 workers. \\
 
-\subsection{Definition of Public Employees}
+\subsection{Characterization of Public Employees}
 \noindent
 I consider to public employees all workers whose employers are a part of the federal administration, thus including judicial, legislative and executive powers. The choice for the federal sphere is mainly motivated by the policy relevance of this paper. The federal budget is subject to bigger scrutiny from the other republican powers, the public, and international organisms. Secondly, due to the higher transparency in the National Treasury bookkeeping, I am able to provide a more reliable estimate for the fiscal impact of the public-private wage gap.        
 
-\subsection{RAIS}
-\begin{enumerate}
-    \item Filter RAIS for: prime age workers (25-54), keep only CNPJs - drop CEIs, drop blank PIS, select only federal administration employees, keep only clt and statutory.
-    \item sample using 1\% or 10\% of whole data set.  
-    \item validate CNPJ and PIS
-    \item compute log hourly wages (hired wages over hired hours)
-    \item select contract types (permanent vs temporary)
-    \item create variable for low, medium and high skills
-    \item create different subsets from sample, skills $\times$ sex $\times$ race.
-    \item show descriptive statistics.
-\end{enumerate}
-
-\subsection{Comparison with data in previous papers}
-\begin{enumerate}
-    \item describe advantages over PNAD
-    \item describe advantages over PME
-\end{enumerate}
 
 \subsection{RAIS versus PNAD and PME}
-The totality of papers mentioned in the literature review of Section \ref{section:lit-review} uses two different sources of employment records. The most widely used is the \emph{Pesquisa Nacional por Amostra de Domicílios} - or simply, PNAD - which is a household survey carried out yearly.  
+The totality of papers mentioned in the literature review of Section \ref{section:lit-review} uses two different sources of employment records. The most widely used is the \emph{Pesquisa Nacional por Amostra de Domicílios} - or simply, PNAD - which is a yearly household survey. The main drawback of PNAD compared to RAIS is that the household survey does not allow for the observation of individuals across distinct time periods. As I show in Section \ref{section:end-sel}, my correction for endogenous selection relies on the identification of worker fixed effects. 
+
+On the other hand, PNAD covers the informal sector of the labor market, which is absent in RAIS. From records of PNAD itself, \cite{filho_evolucao_2015} show that informal workers accounted for 32.5\% of the total work force in 2012, after having reached 42.3\% in 2003. From a policy perspective, however, the estimate of a the public sector wage premium must be done in comparison to the formal private sector. This is due to two main reasons. One, posting informal job vacancies is not an option for the federal government to offer its employees a formal arrangement. Most importantly, nonetheless, is the fact that the observable attributes composition of public sector employees are much closer to the formal private sector pool than the informal one \footnote{\textcolor{red}{I have to add more evidence on this, but \cite{corseuil_criterios_2015} find that informal sector workers are more likely to be women, less likely to be white, and have lower educational attainment and labor attachment.}}. \\
+
+\noindent
+\cite{emilio_evaluating_2012}, on the other hand, estimate the wage gap from the \emph{Pesquisa Mensal do Emprego} - PME. Similar to PNAD, workers from the informal sector are surveyed in PME but each household is also re-surveyed after a period of one year. Using demographic variables, \cite{emilio_evaluating_2012} can match individuals within the same household across the two periods of observation and estimate an individual fixed effect to net out endogenous selection into the public sector effect. \\
+
+\noindent
+The disadvantages of the PME are related to its territorial coverage - only 30\% of the population in the 2002-2004 interval examined by \cite{emilio_evaluating_2012} - and the reduced number of time periods available to estimate the individual specific effects - $T=2$. As \cite{canay_simple_2011} shows, the consistency of worker fixed effects relies on large $T$ asymptotics. With my sample of RAIS I cover the whole of the Brazilian territory and I am able to estimate worker specific effects with up to 12 yearly observations\footnote{\textcolor{red}{Upon update of the data to include years 2015, 2016 and 2017, I'll be able to re-estimate individual fixed effects with up to 15 yearly observations.}}.   
 
 \section{Equations for estimations}
 \subsection{Naïve equations}
 Throughout this paper I will refer to the model and estimation of the premium in the absence of any endogenous selection treatment as naïve. If we ignore the possibility of sorting into the public sector of individuals with higher unobserved ability, we could consistently estimate the public-private premium by means of an Oaxaca-Blinder decomposition[\cite{oaxaca_male-female_1973},\cite{blinder_wage_1973}]. \\
 
 \noindent
-Let's denote by $y^{1}_{it}$ the observed wage for individual $i$ in year $t$ in the public sector. If n year $t$, individual $i$ works at the private sector, I denote his wage by $y^{0}_{it}$. Conditional on a set $X_{it}$ of observed individual characteristics, the expected wage in each sector is given by  
+Let's denote by $y^{1}_{it}$ the observed wage for individual $i$ in year $t$ in the public sector. If in year $t$, individual $i$ works at the private sector, I denote his wage by $y^{0}_{it}$. Conditional on a set $X_{it}$ of observed individual characteristics, the expected wage in each sector is given by  
 
 \begin{align}
     y_{it}^{1} = X_{it}^{1}\beta^{1}+u_{it}\\
@@ -98,7 +89,7 @@ which, after taking the averages over individuals, can be rewritten as
 The left hand side of equation (\ref{ob-str}) is the observed mean wage difference between public and private sector workers. The right hand side breaks this difference into two terms that I will refer to \emph{characteristics} and \emph{structural} effects. The characteristics estimates the size of the observed mean wage difference due to differences in observed attributes of workers in both groups, holding fixed the coefficients in the wage equation for group $0$. A higher characteristics effect is obtained when, holding fixed the parameters of equation (\ref{wage-priv}), workers in the public sector have higher (lower) mean observed attributes associated with positive (negative) coefficients in equation (\ref{wage-priv}). \\
 
 \noindent
-This is indeed the case when we observe the values of exploratory statistics from the sample. From table \ref{table:all}, we can see that workers in the public sector have higher education attainment, higher tenure in the current job, are slightly older and are more likely to be white.   
+This is indeed the case when we observe the values of exploratory statistics from the sample. From table \ref{table:all}, we can see that workers in the public sector have higher education attainment, higher tenure in the current job, are slightly older and more likely to be white.   
 
 \begin{longtable}[c]{@{}lccc@{}}
 \toprule
@@ -107,12 +98,12 @@ This is indeed the case when we observe the values of exploratory statistics fro
 \midrule
 \endhead
 Hourly wage (2011 US\$) & & &\tabularnewline
-- Mean (SD) & 41.314 (56.723) & 23.292 (56.803) & 26.930
-(57.245)\tabularnewline
-- Median (Q1, Q3) & 24.400 (12.444, 47.831) & 12.764 (9.224, 21.542) &
-13.809 (9.548, 26.196)\tabularnewline
-- Range & 1.141 - 4758.900 & 1.076 - 21991.700 & 1.076 -
-21991.700\tabularnewline
+- Mean (SD) & 10.328 (14.181) & 5.823 (14.201) & 6.733
+(14.311)\tabularnewline
+- Median (Q1, Q3) & 6.100 (3.111, 11.958) & 3.191 (2.306, 5.386) & 3.452
+(2.387, 6.549)\tabularnewline
+- Range & 0.285 - 1189.725 & 0.269 - 5497.925 & 0.269 -
+5497.925\tabularnewline
 Age & & &\tabularnewline
 - Mean (SD) & 40.072 (8.129) & 35.858 (7.991) & 36.708
 (8.196)\tabularnewline
@@ -149,11 +140,13 @@ Education & & &\tabularnewline
 \label{table:all}
 \end{longtable}
 
-\begin{enumerate}
-    \item Describe the Oaxaca-Blinder decomposition and outline the equation
-    \item Describe the Quantile OB, methodology \cite{chernozhukov_inference_2013} 
-\end{enumerate}
-\subsection{Accounting for endogenous selection}
+\subsection{Distribution of the wage gap}   
+There is no reason \emph{a priori} to believe that the premium is uniform for both low and high wage levels. I am interested in not only describing the \emph{mean} wage gap but also the distribution of the public sector premium along the whole wage distribution. In order to estimate the distribution of the premium, I use a quantile version of the Oaxaca-Blinder decomposition as devised in \cite{chernozhukov_inference_2013}.\\
+
+\noindent
+Going back to equation (\ref{ob-str}), we can interpret the expression $\bar{X}_{t}^{1}\beta^{0}$ as the counterfactual for the wage of an average employee in group $1$ were she rewarded according to the $\beta$ estimates from group $0$. Similarly, we can compute the counterfactual distribution - over different quantiles - of wages of public employees via the method in \cite{chernozhukov_inference_2013}. An exposition of the actual procedure to obtain counterfactual quantiles lies beyond the scope of this paper, but I refer the reader to \cite{hospido_public_2016} for a step-by-step explanation of the method in the Oaxaca-Blinder context. \cite{chernozhukov_inference_2013} also elicits the bootstrapping procedure to construct confidence intervals around the quantile estimates for the characteristics and structural effects in equation \ref{ob-str}.    \\
+
+\subsection{Accounting for endogenous selection} \label{section:end-sel}
 \begin{enumerate}
     \item Discuss \cite{canay_simple_2011} and outline equation for worker efffects estimation
     \item Outline net of FEs equation 
@@ -179,8 +172,8 @@ However, once we take the endogenous selection into the equation, not only does 
 
 
 \begin{figure}[h!]
-    \includegraphics[scale=0.65]{graphs/002_yearly_ob_onepc.pdf}
     \caption{Oaxaca-Blinder Decomposition by Year}
+    \includegraphics[scale=0.65]{graphs/002_yearly_ob_onepc.pdf}
     \label{fig:yearly}
 \end{figure}
 \subsection{Distribution of the Premium}
